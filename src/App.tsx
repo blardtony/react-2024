@@ -1,9 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-
-const Button = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
-  <button onClick={onClick}>{children}</button>
-);
+import Button from "./components/Button";
 
 function App() {
   const [count, setCount] = useState<number>(0);
