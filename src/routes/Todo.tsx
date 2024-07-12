@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Label from "../components/Label";
 import { v4 as uuidv4 } from "uuid";
+import TodosWrapper from "../components/TodosWrapper";
 
 type Todo = {
   id: number;
@@ -38,14 +39,7 @@ const Todo = () => {
         </div>
         <Button type="submit">Ajouter</Button>
       </form>
-      <div className="mt-5">
-        <h2 className="text-2xl font-bold">Tâches</h2>
-        <ul className="list-disc list-inside">
-          {tasks.map((task) => (
-            <li key={task.id}>{task.name}</li>
-          ))}
-        </ul>
-      </div>
+      <TodosWrapper todos={tasks} />
     </div>
   );
 };
