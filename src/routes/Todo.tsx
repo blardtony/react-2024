@@ -2,16 +2,25 @@ import { useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Label from "../components/Label";
+import { v4 as uuidv4 } from "uuid";
 
+type Todo = {
+  id: number;
+  name: string;
+  completed: boolean;
+};
 const Todo = () => {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<Todo[]>([]);
   const [task, setTask] = useState<string>("");
   const inputTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTask(event.target.value);
   };
-  const addTask : React.FormEventHandler<HTMLFormElement> = (e) => {
+  const addTask: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    setTasks((tasks) => [...tasks, task]);
+    setTasks((tasks) => [
+      ...tasks,
+      { id: uuidv4(), name: task, completed: false },
+    ]);
     setTask("");
   };
   return (
@@ -22,7 +31,7 @@ const Todo = () => {
           <Label id="task" name="Tâche" />
           <Input
             id="task"
-            name="Tâche"
+            placeholder="Qu'allez vous faire aujourd'hui ?"
             value={task}
             onChange={inputTaskChange}
           />
@@ -32,8 +41,8 @@ const Todo = () => {
       <div className="mt-5">
         <h2 className="text-2xl font-bold">Tâches</h2>
         <ul className="list-disc list-inside">
-          {tasks.map((task, index) => (
-            <li key={index}>{task}</li>
+          {tasks.map((task) => (
+            <li key={task.id}>{task.name}</li>
           ))}
         </ul>
       </div>
