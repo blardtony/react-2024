@@ -1,9 +1,7 @@
 import { useState } from "react";
-import Button from "../components/Button";
-import Input from "../components/Input";
-import Label from "../components/Label";
 import { v4 as uuidv4 } from "uuid";
 import TodosWrapper from "../components/TodosWrapper";
+import TodoForm from "../components/TodoForm";
 
 type Todo = {
   id: number;
@@ -27,18 +25,11 @@ const Todo = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold text-center mb-3">Todo App</h1>
-      <form className="max-w-sm mx-auto grid gap-5" onSubmit={addTask}>
-        <div>
-          <Label id="task" name="Tâche" />
-          <Input
-            id="task"
-            placeholder="Qu'allez vous faire aujourd'hui ?"
-            value={task}
-            onChange={inputTaskChange}
-          />
-        </div>
-        <Button type="submit">Ajouter</Button>
-      </form>
+      <TodoForm
+        task={task}
+        addTask={addTask}
+        inputTaskChange={inputTaskChange}
+      />
       <TodosWrapper todos={tasks} />
     </div>
   );
