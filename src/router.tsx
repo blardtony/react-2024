@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Index from "./routes";
 import Counter from "./routes/Counter";
+import Todo from "./routes/Todo";
 
 export const router = createBrowserRouter([
   {
@@ -10,5 +11,9 @@ export const router = createBrowserRouter([
   {
     path: "/counter",
     element: <Counter />,
+  },
+  {
+    path: "/todo",
+    element: <Todo />,
   },
 ]);
