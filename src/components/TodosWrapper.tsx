@@ -7,8 +7,11 @@ type TodoItemType = {
   completed: boolean;
 };
 
-type Todos = TodoItemType[];
-const TodosWrapper: React.FC<{ todos: Todos }> = ({ todos }) => {
+type TodosWrapperProps = {
+  todos: TodoItemType[];
+};
+
+const TodosWrapper: React.FC<TodosWrapperProps> = ({ todos }) => {
   return (
     <div className="max-w-sm mx-auto mt-5">
       {todos.length ? (
